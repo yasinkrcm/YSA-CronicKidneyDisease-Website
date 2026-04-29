@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(git commit *)",
+      "Bash(git * main)",
+      "Bash(* --version)",
+      "Bash(* --help *)",
+      "Bash(npx --yes create-next-app@latest frontend --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --use-npm --no-turbopack)",
+      "Bash(npm install *)",
+      "Bash(npm list *)",
+      "Bash(npm uninstall *)",
+      "Bash(npm view *)",
+      "Bash(rm -rf node_modules/.package-lock.json)",
+      "Bash(npm cache *)",
+      "Bash(pip show *)",
+      "Bash(pip install *)",
+      "Bash(python convert_to_onnx.py)",
+      "Bash(bun install *)",
+      "Bash(bun run *)",
+      "Bash(curl *)",
+      "Bash(python -c ' *)",
+      "Bash(python convert_model.py)"
+    ],
+    "deny": [
+      "Bash(git push *)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "github"
+  ]
+}
