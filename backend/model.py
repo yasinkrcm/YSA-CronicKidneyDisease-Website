@@ -3,16 +3,21 @@ import torch.nn as nn
 
 
 class KidneyDiseaseClassifier(nn.Module):
-    def __init__(self, input_size=24):
+    """Notebook'taki DynamicMLPModel ile birebir aynı mimari.
+    hidden_layers=(64, 32), activation='relu', num_classes=2
+    """
+    def __init__(self, input_size=24, hidden_layers=(64, 32), num_classes=3):
         super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(input_size, 64),
-            nn.ReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(64, 32),
-        )
-        self.output_layer = nn.Linear(32, 3)
+        self.layers = nn.ModuleList()
+        self.act = nn.ReLU()
+
+        in_features = input_size
+        for out_features in hidden_layers:
+            self.layers.append(nn.Linear(in_features, out_features))
+            in_features = out_features
+        self.output_layer = nn.Linear(in_features, num_classes)
 
     def forward(self, x):
-        x = self.layers(x)
+        for layer in self.layers:
+            x = self.act(layer(x))
         return self.output_layer(x)

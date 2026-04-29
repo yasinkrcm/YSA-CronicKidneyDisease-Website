@@ -1,57 +1,57 @@
 "use client";
 
-import { useState } from "react";
 import InputForm from "@/components/InputForm";
-import ResultCard from "@/components/ResultCard";
-import { PredictionResponse } from "@/lib/api";
+import ThemeToggle from "@/components/ThemeToggle";
+import { HeartPulse, Sparkles } from "lucide-react";
 
 export default function Home() {
-  const [result, setResult] = useState<PredictionResponse | null>(null);
-
-  const handleResult = (predictionResult: PredictionResponse) => {
-    setResult(predictionResult);
-    setTimeout(() => {
-      document.getElementById("result-section")?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-black py-12 px-4">
-      <div className="max-w-5xl mx-auto space-y-8">
-        <div className="text-center space-y-4">
-          <div className="flex justify-center gap-3 items-center">
-            <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
-              Böbrek Hastalığı Sınıflandırması
-            </h1>
-            <span className="px-4 py-2 bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300 rounded-full text-sm font-medium">
-              AI Powered
-            </span>
-          </div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Yapay zeka destekli bu uygulama, böbrek hastalığı riskini belirlemek için
-            makine öğrenmesi modeli ve Gemini AI yorumlaması kullanmaktadır.
-          </p>
+    <div style={{ minHeight: "100vh", background: "var(--bg-primary)", padding: "40px 16px", transition: "background 0.3s ease" }}>
+      {/* Top bar */}
+      <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", justifyContent: "flex-end", marginBottom: 16 }}>
+        <ThemeToggle />
+      </div>
+
+      {/* Hero Header */}
+      <div style={{ maxWidth: 900, margin: "0 auto 32px", textAlign: "center" }}>
+        <div style={{
+          width: 56, height: 56, borderRadius: 16,
+          background: "linear-gradient(135deg, var(--accent), #5ac8fa)",
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          marginBottom: 16,
+          boxShadow: "0 4px 16px var(--accent-light)",
+        }}>
+          <HeartPulse size={28} color="#ffffff" />
         </div>
 
-        <InputForm onResult={handleResult} />
-
-        {result && (
-          <div id="result-section" className="animate-fade-in">
-            <ResultCard
-              prediction={result.prediction}
-              prediction_label={result.prediction_label}
-              confidence={result.confidence}
-              gemini_comment={result.gemini_comment}
-            />
-          </div>
-        )}
-
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 max-w-4xl mx-auto">
-          <p className="text-center text-sm text-gray-500">
-            <strong>Not:</strong> Bu uygulama yalnızca bilgilendirme amaçlıdır ve tıbbi tavsiye
-            yerine geçmez. Kesin tanı için lütfen bir sağlık uzmanına danışınız.
-          </p>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 10 }}>
+          <h1 style={{ fontSize: "clamp(28px, 5vw, 38px)", fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2 }}>
+            Böbrek Hastalığı Analizi
+          </h1>
+          <span style={{
+            display: "inline-flex", alignItems: "center", gap: 4,
+            padding: "4px 10px", borderRadius: 12, fontSize: 11, fontWeight: 600,
+            background: "var(--accent-light)", color: "var(--accent)",
+          }}>
+            <Sparkles size={12} /> AI Destekli
+          </span>
         </div>
+
+        <p style={{ fontSize: 15, color: "var(--text-secondary)", maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
+          Yapay sinir ağı modeli ve Gemini AI yorumlaması ile böbrek hastalığı riskini analiz edin.
+        </p>
+
+        <div style={{ height: 1, background: "var(--border-secondary)", margin: "24px auto 0", maxWidth: 400 }} />
+      </div>
+
+      {/* Form */}
+      <InputForm />
+
+      {/* Footer */}
+      <div style={{ maxWidth: 900, margin: "32px auto 0", textAlign: "center" }}>
+        <p style={{ fontSize: 11, color: "var(--text-tertiary)" }}>
+          Bu uygulama yalnızca bilgilendirme amaçlıdır ve tıbbi tavsiye yerine geçmez.
+        </p>
       </div>
     </div>
   );

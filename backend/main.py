@@ -84,36 +84,56 @@ def load_model():
         model.eval()
 
 
-def normalize_value(value: float, min_val: float, max_val: float) -> float:
-    return (value - min_val) / (max_val - min_val) if max_val > min_val else 0.5
-
-
 def preprocess_input(data: PredictionRequest) -> torch.Tensor:
-    input_dict = data.model_dump()
-
+    """Notebook ile birebir aynı preprocessing:
+    1. Feature sırası notebook'taki sütun sırası ile aynı (id ve siniflandirma hariç)
+    2. StandardScaler (notebook'ta fit edilen mean/std değerleri)
+    """
+    # Notebook'taki sütun sırası (id ve siniflandirma çıkarılmış)
     feature_order = [
         "yas", "kan_basinci", "ozgul_agirlik", "albumin", "seker",
+        "kirmizi_kan_hucresi", "irin_hucresi", "irin_hucresi_kumesi", "bakteri",
         "rastgele_kan_sekeri", "kan_ure", "serum_kreatinin", "sodyum", "potasyum",
         "hemoglobin", "paketli_hucre_hacmi", "beyaz_kan_hucresi_sayisi", "kirmizi_kan_hucresi_sayisi",
-        "kirmizi_kan_hucresi", "irin_hucresi", "irin_hucresi_kumesi", "bakteri",
         "hipertansiyon", "diyabet", "koroner_arter_hastaligi", "istah", "ayak_odemi", "anemi"
     ]
 
-    numeric_ranges = {
-        "yas": (0, 100), "kan_basinci": (50, 200), "ozgul_agirlik": (1.0, 1.03),
-        "albumin": (0, 5), "seker": (0, 5), "rastgele_kan_sekeri": (50, 500),
-        "kan_ure": (10, 200), "serum_kreatinin": (0.5, 15), "sodyum": (100, 160),
-        "potasyum": (2, 8), "hemoglobin": (5, 20), "paketli_hucre_hacmi": (20, 60),
-        "beyaz_kan_hucresi_sayisi": (2000, 20000), "kirmizi_kan_hucresi_sayisi": (2, 8)
+    # StandardScaler mean/std değerleri (notebook'tan birebir)
+    scaler_mean = {
+        "yas": 51.483376, "kan_basinci": 76.469072, "ozgul_agirlik": 1.017408,
+        "albumin": 1.016949, "seker": 0.450142,
+        "kirmizi_kan_hucresi": 0.882500, "irin_hucresi": 0.810000,
+        "irin_hucresi_kumesi": 0.105000, "bakteri": 0.055000,
+        "rastgele_kan_sekeri": 148.036517, "kan_ure": 57.425722, "serum_kreatinin": 3.072454,
+        "sodyum": 137.528754, "potasyum": 4.627244, "hemoglobin": 12.526437,
+        "paketli_hucre_hacmi": 27.227500, "beyaz_kan_hucresi_sayisi": 63.905000,
+        "kirmizi_kan_hucresi_sayisi": 29.962500,
+        "hipertansiyon": 0.367500, "diyabet": 3.300000,
+        "koroner_arter_hastaligi": 1.080000, "istah": 0.205000,
+        "ayak_odemi": 0.190000, "anemi": 0.150000,
     }
+    scaler_std = {
+        "yas": 16.953734, "kan_basinci": 13.459442, "ozgul_agirlik": 0.005363,
+        "albumin": 1.270726, "seker": 1.028199,
+        "kirmizi_kan_hucresi": 0.322015, "irin_hucresi": 0.392301,
+        "irin_hucresi_kumesi": 0.306553, "bakteri": 0.227980,
+        "rastgele_kan_sekeri": 74.689098, "kan_ure": 49.224241, "serum_kreatinin": 5.610464,
+        "sodyum": 9.192761, "potasyum": 2.816256, "hemoglobin": 2.712774,
+        "paketli_hucre_hacmi": 8.294320, "beyaz_kan_hucresi_sayisi": 27.608802,
+        "kirmizi_kan_hucresi_sayisi": 9.503478,
+        "hipertansiyon": 0.482124, "diyabet": 0.578792,
+        "koroner_arter_hastaligi": 0.289137, "istah": 0.403702,
+        "ayak_odemi": 0.392301, "anemi": 0.357071,
+    }
+
+    input_dict = data.model_dump()
 
     features = []
     for key in feature_order:
-        value = input_dict[key]
-        if key in numeric_ranges:
-            min_val, max_val = numeric_ranges[key]
-            value = normalize_value(value, min_val, max_val)
-        features.append(value)
+        raw = float(input_dict[key])
+        # StandardScaler: (x - mean) / std
+        scaled = (raw - scaler_mean[key]) / scaler_std[key]
+        features.append(scaled)
 
     return torch.tensor(features, dtype=torch.float32).unsqueeze(0)
 
@@ -128,40 +148,38 @@ async def get_gemini_comment(data: PredictionRequest, prediction: int, confidenc
     try:
         label = get_label(prediction)
 
-        prompt = f"""Bir nefroloji uzmanı olarak, aşağıdaki böbrek hastalığı tahmin sonucunu Türkçe olarak yorumlayın:
+        prompt = f"""Nefroloji uzmanı olarak aşağıdaki tahmin sonucunu Türkçe, kısa ve öz şekilde yorumla:
 
-Tahmin: {label}
-Güven Oranı: %{confidence:.1f}
+Tahmin: {label} | KBY Risk: %{confidence:.1f}
 
-Hasta Verileri:
-- Yaş: {data.yas}
-- Kan Basıncı: {data.kan_basinci} mmHg
-- Özgül Ağırlık: {data.ozgul_agirlik}
-- Albumin: {data.albumin}
-- Şeker: {data.seker}
-- Rastgele Kan Şekeri: {data.rastgele_kan_sekeri} mg/dL
-- Kan Üre: {data.kan_ure} mg/dL
-- Serum Kreatinin: {data.serum_kreatinin} mg/dL
-- Sodyum: {data.sodyum} mEq/L
-- Potasyum: {data.potasyum} mEq/L
-- Hemoglobin: {data.hemoglobin} g/dL
-- Paketli Hücre Hacmi: {data.paketli_hucre_hacmi}%
-- Beyaz Kan Hücresi: {data.beyaz_kan_hucresi_sayisi}/mm³
-- Kırmızı Kan Hücresi: {data.kirmizi_kan_hucresi_sayisi} M/μL
+ÖNEMLİ PARAMETRELER (Feature Importance sırasına göre):
+- SG (Özgül Ağırlık): {data.ozgul_agirlik}
+- HGB (Hemoglobin): {data.hemoglobin} g/dL
+- SCr (Serum Kreatinin): {data.serum_kreatinin} mg/dL
+- HCT (Paketli Hücre Hacmi): {data.paketli_hucre_hacmi}%
+- RBC (Kırmızı Kan Hücresi Sayısı): {data.kirmizi_kan_hucresi_sayisi} M/μL
 
-Bu hasta için yapıcı, nazik ve hastayı paniğe sevk etmeyecek şekilde açıklayıcı bir değerlendirme yazın. 
-Anormal veya sınırda olan değerlerin (kan değerleri, elektrolitler vb.) ne anlama geldiğini ve hastanın günlük hayatta veya tıbbi yardım sürecinde atması gereken adımları madde madde açıklayın.
-Yorumunuz hem bilimsel/tıbbi bir dille hem de hastanın anlayabileceği açıklıkta, ancak **korkutucu olmayan, destekleyici bir üslupta** olmalıdır. "Kesinlikle yanlış", "Hayati risk", "Acil" gibi hastada aşırı panik yaratacak keskin ifadeler kullanmaktan kaçının.
+Diğer Parametreler:
+Yaş: {data.yas} | KB: {data.kan_basinci} mmHg | ALB: {data.albumin} | BUN: {data.kan_ure} mg/dL
+Na: {data.sodyum} | K: {data.potasyum} | HT: {data.hipertansiyon} | DM: {data.diyabet} | Anemi: {data.anemi}
 
-Lütfen yanıtınızı HTML formatında oluşturun.
-- Ana başlık: <h2>Yapay Zeka Değerlendirmesi</h2>
-- Alt başlıklar: <h3>Etiketini kullanın.</h3>
-- Paragraflar: <p>Etiketini kullanın.</p>
-- Listeler: <ul> ve <li> etiketlerini kullanın.
-- Önemli yerler: <strong>Etiketini kullanın.</strong>
-- Yanıtınıza ```html gibi kod blokları eklemeyin.
+Yanıtın şu 3 bölümden oluşsun, her biri kısa (2-3 cümle veya en fazla 4 madde):
+1. Genel değerlendirme (tahmin sonucu ve öne çıkan değerler)
+2. Dikkat edilmesi gerekenler (yalnızca en kritik bulgular, madde madde, max 4 madde)
+3. Öneri (kısa, destekleyici, panik yaratmayan 1-2 cümle)
 
-NOT: Eğer KBH (Kronik Böbrek Hastalığı) risk bölgesi veya teşhisi tespit edilirse, hastanın durumunu takip etmesi için bir nefroloji uzmanına başvurması gerektiğini **kibarca ve tavsiye niteliğinde** vurgulayın. Ayrıca bu analizin sadece bilgilendirme amaçlı bir yapay zeka yorumu olduğunu ve kesin teşhis yerine geçmediğini belirtin."""
+ÖNEMLİ TERMİNOLOJİ: "Kronik Böbrek Hastalığı" veya "KBH" ifadelerini KULLANMA. Bunun yerine her zaman "Kronik Böbrek Yetmezliği" kullan.
+
+HTML formatında yaz. Şu etiketleri kullan: <h3>, <p>, <ul>, <li>, <strong>.
+Kod bloğu (```html vb.) ekleme. Korkutucu ifade kullanma.
+
+STIL KURALLARI (inline CSS ile uygula):
+- h3 etiketlerine: style="font-size:15px; font-weight:600; margin:16px 0 8px 0; color:inherit;"
+- p etiketlerine: style="font-size:14px; line-height:1.7; margin:0 0 10px 0; color:inherit; opacity:0.85;"
+- ul etiketlerine: style="margin:8px 0 12px 0; padding-left:20px; list-style:disc;"
+- li etiketlerine: style="font-size:14px; line-height:1.7; margin-bottom:4px; color:inherit; opacity:0.85;"
+- strong etiketlerine: style="font-weight:600; color:inherit; opacity:1;"
+"""
 
         GEMINI_3_FLASH_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key={api_key}"
         # GEMINI_2_5_FLASH_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
@@ -192,10 +210,10 @@ NOT: Eğer KBH (Kronik Böbrek Hastalığı) risk bölgesi veya teşhisi tespit 
 
 
 def get_default_comment(prediction: int, confidence: float) -> str:
-    labels = {0: "Kronik Böbrek Hastalığı (KBH) Tespit Edildi", 1: "Normal Böbrek Fonksiyonu"}
+    labels = {0: "Sağlıklı Böbrek Fonksiyonu", 1: "Kronik Böbrek Yetmezliği (KBY) Tespit Edildi"}
     label = labels[prediction]
 
-    if prediction == 0:
+    if prediction == 1:
         return f"{label}\n\nBu sonuç, böbreklerinizde sorun olabileceğini göstermektedir. Lütfen bir nefroloji uzmanına danışarak daha ileri tetkikler yaptırın.\n\nÖnemli: Bu uygulama tıbbi tavsiye yerine geçmez."
     else:
         return f"{label}\n\nBu sonuçlara göre böbrekleriniz sağlıklı görünmektedir. Ancak semptomlarınız varsa doktorunuza danışmaya devam edin.\n\nÖnemli: Bu uygulama tıbbi tavsiye yerine geçmez."
@@ -230,11 +248,16 @@ async def health_check():
     return {"status": "healthy", "model_loaded": model is not None}
 
 
-def get_label(prediction: int) -> str:
-    """Map 3-class model output to 2-class frontend expectation"""
-    # Model outputs 3 classes but frontend expects 2 (KBH, Normal)
-    # CKD (0) vs NotCKD (1 or 2) - we treat class 0 as CKD, others as Normal
-    return "KBH" if prediction == 0 else "Normal"
+def get_label(disease_pct: float) -> str:
+    """Map disease probability to risk label"""
+    if disease_pct >= 75:
+        return "Hasta"
+    elif disease_pct >= 50:
+        return "Yüksek Risk"
+    elif disease_pct >= 25:
+        return "Düşük Risk"
+    else:
+        return "Sağlıklı"
 
 
 @app.post("/predict", response_model=PredictionResponse)
@@ -252,15 +275,18 @@ async def predict(data: PredictionRequest, request: Request):
         with torch.no_grad():
             output = model(input_tensor)
             probabilities = torch.nn.functional.softmax(output[0], dim=0).numpy()
-            prediction = int(np.argmax(probabilities))
-            confidence = float(probabilities[prediction]) * 100.0
+            # Model: class 0 = hasta (KBY), class 1+ = sağlıklı
+            # Response: prediction 1 = hasta, prediction 0 = sağlıklı
+            disease_pct = min(100.0, max(0.0, float(probabilities[0]) * 100.0))
+            prediction = 1 if disease_pct >= 50 else 0
 
-        gemini_comment = await get_gemini_comment(data, prediction, confidence)
+        label = get_label(disease_pct)
+        gemini_comment = await get_gemini_comment(data, prediction, disease_pct)
 
         return PredictionResponse(
             prediction=prediction,
-            prediction_label=get_label(prediction),
-            confidence=confidence,
+            prediction_label=label,
+            confidence=disease_pct,
             gemini_comment=gemini_comment
         )
 
