@@ -6,7 +6,7 @@ class KidneyDiseaseClassifier(nn.Module):
     """Notebook'taki DynamicMLPModel ile birebir aynı mimari.
     hidden_layers=(64, 32), activation='relu', num_classes=2
     """
-    def __init__(self, input_size=24, hidden_layers=(64, 32), num_classes=3):
+    def __init__(self, input_size=24, hidden_layers=(64, 32), num_classes=2):
         super().__init__()
         self.layers = nn.ModuleList()
         self.act = nn.ReLU()

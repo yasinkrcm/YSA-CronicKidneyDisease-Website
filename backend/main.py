@@ -98,31 +98,31 @@ def preprocess_input(data: PredictionRequest) -> torch.Tensor:
         "hipertansiyon", "diyabet", "koroner_arter_hastaligi", "istah", "ayak_odemi", "anemi"
     ]
 
-    # StandardScaler mean/std değerleri (notebook'tan birebir)
+    # StandardScaler mean/std — temiz veri üzerinden yeniden eğitilmiş model
     scaler_mean = {
-        "yas": 51.483376, "kan_basinci": 76.469072, "ozgul_agirlik": 1.017408,
-        "albumin": 1.016949, "seker": 0.450142,
+        "yas": 51.562500, "kan_basinci": 76.575000, "ozgul_agirlik": 1.017712,
+        "albumin": 0.900000, "seker": 0.395000,
         "kirmizi_kan_hucresi": 0.882500, "irin_hucresi": 0.810000,
         "irin_hucresi_kumesi": 0.105000, "bakteri": 0.055000,
-        "rastgele_kan_sekeri": 148.036517, "kan_ure": 57.425722, "serum_kreatinin": 3.072454,
-        "sodyum": 137.528754, "potasyum": 4.627244, "hemoglobin": 12.526437,
-        "paketli_hucre_hacmi": 27.227500, "beyaz_kan_hucresi_sayisi": 63.905000,
-        "kirmizi_kan_hucresi_sayisi": 29.962500,
-        "hipertansiyon": 0.367500, "diyabet": 3.300000,
-        "koroner_arter_hastaligi": 1.080000, "istah": 0.205000,
+        "rastgele_kan_sekeri": 145.062500, "kan_ure": 56.693000, "serum_kreatinin": 2.997125,
+        "sodyum": 137.631250, "potasyum": 4.577250, "hemoglobin": 12.542500,
+        "paketli_hucre_hacmi": 39.082500, "beyaz_kan_hucresi_sayisi": 8298.500000,
+        "kirmizi_kan_hucresi_sayisi": 4.737750,
+        "hipertansiyon": 0.367500, "diyabet": 0.342500,
+        "koroner_arter_hastaligi": 0.085000, "istah": 0.205000,
         "ayak_odemi": 0.190000, "anemi": 0.150000,
     }
     scaler_std = {
-        "yas": 16.953734, "kan_basinci": 13.459442, "ozgul_agirlik": 0.005363,
-        "albumin": 1.270726, "seker": 1.028199,
+        "yas": 16.961754, "kan_basinci": 13.472913, "ozgul_agirlik": 0.005427,
+        "albumin": 1.311488, "seker": 1.038737,
         "kirmizi_kan_hucresi": 0.322015, "irin_hucresi": 0.392301,
         "irin_hucresi_kumesi": 0.306553, "bakteri": 0.227980,
-        "rastgele_kan_sekeri": 74.689098, "kan_ure": 49.224241, "serum_kreatinin": 5.610464,
-        "sodyum": 9.192761, "potasyum": 2.816256, "hemoglobin": 2.712774,
-        "paketli_hucre_hacmi": 8.294320, "beyaz_kan_hucresi_sayisi": 27.608802,
-        "kirmizi_kan_hucresi_sayisi": 9.503478,
-        "hipertansiyon": 0.482124, "diyabet": 0.578792,
-        "koroner_arter_hastaligi": 0.289137, "istah": 0.403702,
+        "rastgele_kan_sekeri": 75.166639, "kan_ure": 49.333475, "serum_kreatinin": 5.621846,
+        "sodyum": 9.194816, "potasyum": 2.817828, "hemoglobin": 2.713092,
+        "paketli_hucre_hacmi": 8.152036, "beyaz_kan_hucresi_sayisi": 2526.429843,
+        "kirmizi_kan_hucresi_sayisi": 0.840387,
+        "hipertansiyon": 0.482124, "diyabet": 0.474546,
+        "koroner_arter_hastaligi": 0.278882, "istah": 0.403702,
         "ayak_odemi": 0.392301, "anemi": 0.357071,
     }
 
@@ -275,10 +275,10 @@ async def predict(data: PredictionRequest, request: Request):
         with torch.no_grad():
             output = model(input_tensor)
             probabilities = torch.nn.functional.softmax(output[0], dim=0).numpy()
-            # Model: class 0 = hasta (KBY), class 1+ = sağlıklı
-            # Response: prediction 1 = hasta, prediction 0 = sağlıklı
+            # Temiz model: Class 0 = CKD (hasta), Class 1 = NotCKD (sağlıklı)
             disease_pct = min(100.0, max(0.0, float(probabilities[0]) * 100.0))
             prediction = 1 if disease_pct >= 50 else 0
+            logger.info(f"Probs: CKD={probabilities[0]:.4f} NotCKD={probabilities[1]:.4f} | disease={disease_pct:.1f}% | pred={prediction}")
 
         label = get_label(disease_pct)
         gemini_comment = await get_gemini_comment(data, prediction, disease_pct)
