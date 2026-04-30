@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Böbrek Hastalığı Sınıflandırması | AI Destekli Tanı",
-  description: "Yapay zeka destekli böbrek hastalığı riski belirleme uygulaması. PyTorch ML modeli ve Gemini AI yorumlaması ile.",
+  title: "Kronik Böbrek Yetmezliği Sınıflandırması | Yapay Sinir Ağı",
+  description: "Yapay sinir ağı destekli kronik böbrek yetmezliği riski belirleme uygulaması. PyTorch ML modeli ve Gemini AI yorumlaması ile.",
 };
 
 export default function RootLayout({

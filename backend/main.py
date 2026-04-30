@@ -128,40 +128,40 @@ async def get_gemini_comment(data: PredictionRequest, prediction: int, confidenc
     try:
         label = get_label(prediction)
 
-        prompt = f"""Bir nefroloji uzmanı olarak, aşağıdaki böbrek hastalığı tahmin sonucunu Türkçe olarak yorumlayın:
+        prompt = f"""Nefroloji uzmanı olarak aşağıdaki yapay sinir ağı tahmin sonucunu Türkçe yorumla.
 
-Tahmin: {label}
-Güven Oranı: %{confidence:.1f}
+Tahmin: {label} | Güven: %{confidence:.1f}
+Yaş: {data.yas} | KB: {data.kan_basinci} mmHg | SG: {data.ozgul_agirlik} | Alb: {data.albumin} | Şeker: {data.seker}
+RKŞ: {data.rastgele_kan_sekeri} | BUN: {data.kan_ure} | SCr: {data.serum_kreatinin} | Na: {data.sodyum} | K: {data.potasyum}
+HGB: {data.hemoglobin} | HCT: {data.paketli_hucre_hacmi} | WBC: {data.beyaz_kan_hucresi_sayisi} | RBC: {data.kirmizi_kan_hucresi_sayisi}
 
-Hasta Verileri:
-- Yaş: {data.yas}
-- Kan Basıncı: {data.kan_basinci} mmHg
-- Özgül Ağırlık: {data.ozgul_agirlik}
-- Albumin: {data.albumin}
-- Şeker: {data.seker}
-- Rastgele Kan Şekeri: {data.rastgele_kan_sekeri} mg/dL
-- Kan Üre: {data.kan_ure} mg/dL
-- Serum Kreatinin: {data.serum_kreatinin} mg/dL
-- Sodyum: {data.sodyum} mEq/L
-- Potasyum: {data.potasyum} mEq/L
-- Hemoglobin: {data.hemoglobin} g/dL
-- Paketli Hücre Hacmi: {data.paketli_hucre_hacmi}%
-- Beyaz Kan Hücresi: {data.beyaz_kan_hucresi_sayisi}/mm³
-- Kırmızı Kan Hücresi: {data.kirmizi_kan_hucresi_sayisi} M/μL
+Aşağıdaki HTML yapısını BİREBİR kullan. Sadece [...] kısımlarını doldur. Yapıyı değiştirme, ek etiket ekleme.
 
-Bu hasta için yapıcı, nazik ve hastayı paniğe sevk etmeyecek şekilde açıklayıcı bir değerlendirme yazın. 
-Anormal veya sınırda olan değerlerin (kan değerleri, elektrolitler vb.) ne anlama geldiğini ve hastanın günlük hayatta veya tıbbi yardım sürecinde atması gereken adımları madde madde açıklayın.
-Yorumunuz hem bilimsel/tıbbi bir dille hem de hastanın anlayabileceği açıklıkta, ancak **korkutucu olmayan, destekleyici bir üslupta** olmalıdır. "Kesinlikle yanlış", "Hayati risk", "Acil" gibi hastada aşırı panik yaratacak keskin ifadeler kullanmaktan kaçının.
+<div style="display:flex;flex-direction:column;gap:14px;">
+  <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:12px;padding:14px 16px;">
+    <p style="font-weight:600;font-size:13px;color:#3b82f6;margin:0 0 8px 0;">🔬 Bulgular</p>
+    <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
+      <li style="font-size:13px;line-height:1.5;color:inherit;">[Anormal parametre — kısa klinik açıklama]</li>
+      <li style="font-size:13px;line-height:1.5;color:inherit;">[Anormal parametre — kısa klinik açıklama]</li>
+    </ul>
+  </div>
+  <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);border-radius:12px;padding:14px 16px;">
+    <p style="font-weight:600;font-size:13px;color:#10b981;margin:0 0 8px 0;">💡 Öneriler</p>
+    <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
+      <li style="font-size:13px;line-height:1.5;color:inherit;">[Somut öneri]</li>
+      <li style="font-size:13px;line-height:1.5;color:inherit;">[Somut öneri]</li>
+    </ul>
+  </div>
+  <p style="font-size:11px;color:#888;margin:0;text-align:center;">Bu değerlendirme yapay zeka tarafından üretilmiştir, kesin tıbbi tanı yerine geçmez.</p>
+</div>
 
-Lütfen yanıtınızı HTML formatında oluşturun.
-- Ana başlık: <h2>Yapay Zeka Değerlendirmesi</h2>
-- Alt başlıklar: <h3>Etiketini kullanın.</h3>
-- Paragraflar: <p>Etiketini kullanın.</p>
-- Listeler: <ul> ve <li> etiketlerini kullanın.
-- Önemli yerler: <strong>Etiketini kullanın.</strong>
-- Yanıtınıza ```html gibi kod blokları eklemeyin.
-
-NOT: Eğer KBH (Kronik Böbrek Hastalığı) risk bölgesi veya teşhisi tespit edilirse, hastanın durumunu takip etmesi için bir nefroloji uzmanına başvurması gerektiğini **kibarca ve tavsiye niteliğinde** vurgulayın. Ayrıca bu analizin sadece bilgilendirme amaçlı bir yapay zeka yorumu olduğunu ve kesin teşhis yerine geçmediğini belirtin."""
+KURALLAR:
+- Bulgularda sadece anormal/sınırda olan 2-4 parametreyi yaz.
+- Önerilerde 2-3 kısa, somut öneri yaz.
+- Toplam maksimum 120 kelime. Kısa tut.
+- Inline CSS stillerini AYNEN koru, değiştirme.
+- ```html kod bloğu ekleme, direkt HTML yaz.
+- Profesyonel klinik üslup kullan, panik yaratma."""
 
         GEMINI_3_FLASH_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key={api_key}"
         # GEMINI_2_5_FLASH_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
@@ -192,7 +192,7 @@ NOT: Eğer KBH (Kronik Böbrek Hastalığı) risk bölgesi veya teşhisi tespit 
 
 
 def get_default_comment(prediction: int, confidence: float) -> str:
-    labels = {0: "Kronik Böbrek Hastalığı (KBH) Tespit Edildi", 1: "Normal Böbrek Fonksiyonu"}
+    labels = {1: "Kronik Böbrek Yetmezliği Tespit Edildi", 0: "Normal Böbrek Fonksiyonu"}
     label = labels[prediction]
 
     if prediction == 0:
@@ -234,7 +234,7 @@ def get_label(prediction: int) -> str:
     """Map 3-class model output to 2-class frontend expectation"""
     # Model outputs 3 classes but frontend expects 2 (KBH, Normal)
     # CKD (0) vs NotCKD (1 or 2) - we treat class 0 as CKD, others as Normal
-    return "KBH" if prediction == 0 else "Normal"
+    return "Kronik Böbrek Yetersizliği " if prediction == 1 else "Normal Böbrek Fonksiyonu"
 
 
 @app.post("/predict", response_model=PredictionResponse)

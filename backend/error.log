@@ -1,0 +1,302 @@
+2026-04-30 18:11:12,435 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:11:12,438 - INFO - Application started
+2026-04-30 18:11:24,348 - INFO - Raw request body: b'{"yas":50,"kan_basinci":80,"ozgul_agirlik":299.999,"albumin":2,"seker":1,"rastgele_kan_sekeri":100,"kan_ure":35,"serum_kreatinin":1.2,"sodyum":140,"potasyum":4.5,"hemoglobin":29.9,"paketli_hucre_hacmi":40,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":4.5,"kirmizi_kan_hucresi":0,"irin_hucresi":0,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:11:24,349 - INFO - Received prediction request with 24 fields
+2026-04-30 18:11:24,362 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:11:39,169 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:12:50,361 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":20,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:12:50,362 - INFO - Received prediction request with 24 fields
+2026-04-30 18:12:50,362 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:13:03,332 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:13:18,693 - INFO - Raw request body: b'{"yas":60,"kan_basinci":100,"ozgul_agirlik":1.005,"albumin":4,"seker":3,"rastgele_kan_sekeri":250,"kan_ure":120,"serum_kreatinin":8,"sodyum":125,"potasyum":5.5,"hemoglobin":8,"paketli_hucre_hacmi":25,"beyaz_kan_hucresi_sayisi":12000,"kirmizi_kan_hucresi_sayisi":3,"kirmizi_kan_hucresi":0,"irin_hucresi":0,"irin_hucresi_kumesi":1,"bakteri":1,"hipertansiyon":1,"diyabet":1,"koroner_arter_hastaligi":1,"istah":1,"ayak_odemi":1,"anemi":1}'
+2026-04-30 18:13:18,693 - INFO - Received prediction request with 24 fields
+2026-04-30 18:13:18,693 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:13:31,888 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:13:43,732 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1.025,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:13:43,732 - INFO - Received prediction request with 24 fields
+2026-04-30 18:13:43,733 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:13:56,401 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:16:00,852 - INFO - Application shutdown
+2026-04-30 18:16:05,578 - INFO - Model loaded successfully
+2026-04-30 18:16:05,578 - INFO - Application started
+2026-04-30 18:16:18,759 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":11100,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:16:18,761 - INFO - Received prediction request with 24 fields
+2026-04-30 18:16:18,761 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:16:33,058 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:18:48,799 - INFO - Application shutdown
+2026-04-30 18:18:52,221 - INFO - Model loaded successfully
+2026-04-30 18:18:52,221 - INFO - Application started
+2026-04-30 18:21:06,785 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1000,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:21:06,787 - INFO - Received prediction request with 24 fields
+2026-04-30 18:21:06,788 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:21:20,648 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:23:11,611 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1.025,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:23:11,611 - INFO - Received prediction request with 24 fields
+2026-04-30 18:23:11,611 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:23:25,836 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:23:50,498 - INFO - Application shutdown
+2026-04-30 18:23:53,585 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:23:53,585 - INFO - Application started
+2026-04-30 18:23:56,376 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:23:56,376 - INFO - Application started
+2026-04-30 18:23:56,379 - INFO - Raw request body: b'{"yas":50,"kan_basinci":100,"ozgul_agirlik":200,"albumin":2,"seker":1,"rastgele_kan_sekeri":100,"kan_ure":25,"serum_kreatinin":1,"sodyum":130,"potasyum":5,"hemoglobin":15,"paketli_hucre_hacmi":45,"beyaz_kan_hucresi_sayisi":6000,"kirmizi_kan_hucresi_sayisi":4,"kirmizi_kan_hucresi":1,"irin_hucresi":0,"irin_hucresi_kumesi":1,"bakteri":0,"hipertansiyon":1,"diyabet":1,"koroner_arter_hastaligi":0,"istah":1,"ayak_odemi":1,"anemi":0}'
+2026-04-30 18:23:56,379 - INFO - Received prediction request with 24 fields
+2026-04-30 18:23:56,379 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:24:07,280 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:26:21,262 - INFO - Application shutdown
+2026-04-30 18:26:23,746 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:26:23,747 - INFO - Application started
+2026-04-30 18:28:12,836 - INFO - Raw request body: b'{"yas":55,"kan_basinci":140,"ozgul_agirlik":1.008,"albumin":10,"seker":5,"rastgele_kan_sekeri":70,"kan_ure":20,"serum_kreatinin":0.6,"sodyum":115,"potasyum":6,"hemoglobin":12,"paketli_hucre_hacmi":52,"beyaz_kan_hucresi_sayisi":3500,"kirmizi_kan_hucresi_sayisi":2.8,"kirmizi_kan_hucresi":0,"irin_hucresi":0,"irin_hucresi_kumesi":1,"bakteri":0,"hipertansiyon":1,"diyabet":1,"koroner_arter_hastaligi":0,"istah":1,"ayak_odemi":1,"anemi":1}'
+2026-04-30 18:28:12,838 - INFO - Received prediction request with 24 fields
+2026-04-30 18:28:12,845 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:28:20,749 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:29:37,488 - INFO - Raw request body: b'{"yas":60,"kan_basinci":130,"ozgul_agirlik":1.005,"albumin":3,"seker":2,"rastgele_kan_sekeri":110,"kan_ure":20,"serum_kreatinin":0.9,"sodyum":118,"potasyum":5.8,"hemoglobin":16,"paketli_hucre_hacmi":50,"beyaz_kan_hucresi_sayisi":4000,"kirmizi_kan_hucresi_sayisi":3,"kirmizi_kan_hucresi":0,"irin_hucresi":0,"irin_hucresi_kumesi":1,"bakteri":0,"hipertansiyon":1,"diyabet":1,"koroner_arter_hastaligi":0,"istah":1,"ayak_odemi":1,"anemi":0}'
+2026-04-30 18:29:37,488 - INFO - Received prediction request with 24 fields
+2026-04-30 18:29:37,489 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:29:43,284 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:29:48,352 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1.025,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:29:48,353 - INFO - Received prediction request with 24 fields
+2026-04-30 18:29:48,353 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:29:56,266 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:30:01,260 - INFO - Raw request body: b'{"yas":65,"kan_basinci":160,"ozgul_agirlik":1.005,"albumin":4,"seker":4,"rastgele_kan_sekeri":80,"kan_ure":15,"serum_kreatinin":0.8,"sodyum":110,"potasyum":6.5,"hemoglobin":17,"paketli_hucre_hacmi":55,"beyaz_kan_hucresi_sayisi":3000,"kirmizi_kan_hucresi_sayisi":2.5,"kirmizi_kan_hucresi":0,"irin_hucresi":0,"irin_hucresi_kumesi":1,"bakteri":0,"hipertansiyon":1,"diyabet":1,"koroner_arter_hastaligi":0,"istah":1,"ayak_odemi":1,"anemi":0}'
+2026-04-30 18:30:01,261 - INFO - Received prediction request with 24 fields
+2026-04-30 18:30:01,261 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:30:08,847 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:30:08,967 - INFO - Application shutdown
+2026-04-30 18:30:12,314 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:30:12,315 - INFO - Application started
+2026-04-30 18:30:14,996 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:30:14,998 - INFO - Application started
+2026-04-30 18:30:17,762 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:30:17,763 - INFO - Application started
+2026-04-30 18:30:30,998 - INFO - Raw request body: b'{"yas":50,"kan_basinci":100,"ozgul_agirlik":1.015,"albumin":2,"seker":1,"rastgele_kan_sekeri":100,"kan_ure":25,"serum_kreatinin":1,"sodyum":130,"potasyum":5,"hemoglobin":15,"paketli_hucre_hacmi":45,"beyaz_kan_hucresi_sayisi":6000,"kirmizi_kan_hucresi_sayisi":4,"kirmizi_kan_hucresi":1,"irin_hucresi":0,"irin_hucresi_kumesi":1,"bakteri":0,"hipertansiyon":1,"diyabet":1,"koroner_arter_hastaligi":0,"istah":1,"ayak_odemi":1,"anemi":0}'
+2026-04-30 18:30:30,999 - INFO - Received prediction request with 24 fields
+2026-04-30 18:30:30,999 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:30:38,109 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:31:00,159 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":100,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:31:00,159 - INFO - Received prediction request with 24 fields
+2026-04-30 18:31:00,160 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:31:06,963 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:31:11,965 - INFO - Application shutdown
+2026-04-30 18:31:15,302 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:31:15,302 - INFO - Application started
+2026-04-30 18:33:31,047 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1.025,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:33:31,049 - INFO - Received prediction request with 24 fields
+2026-04-30 18:33:31,056 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:33:31,885 - ERROR - Gemini API exception: Traceback (most recent call last):
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection.py", line 99, in handle_async_request
+    raise exc
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_backends\auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_backends\anyio.py", line 115, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\yasin\OneDrive\Masaüstü\Sunumlar\Yapay Sinir Aðlarý\backend\main.py", line 150, in get_gemini_comment
+    async with httpx.AsyncClient(timeout=120.0) as client:
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+2026-04-30 18:33:50,225 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1000,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:33:50,225 - INFO - Received prediction request with 24 fields
+2026-04-30 18:33:50,226 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:33:50,509 - ERROR - Gemini API exception: Traceback (most recent call last):
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection_pool.py", line 216, in handle_async_request
+    raise exc from None
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection_pool.py", line 196, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection.py", line 99, in handle_async_request
+    raise exc
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection.py", line 76, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_async\connection.py", line 122, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_backends\auto.py", line 30, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_backends\anyio.py", line 115, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\yasin\OneDrive\Masaüstü\Sunumlar\Yapay Sinir Aðlarý\backend\main.py", line 150, in get_gemini_comment
+    async with httpx.AsyncClient(timeout=120.0) as client:
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\yasin\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+2026-04-30 18:33:55,523 - INFO - Application shutdown
+2026-04-30 18:33:58,523 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:33:58,523 - INFO - Application started
+2026-04-30 18:34:00,884 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:34:00,885 - INFO - Application started
+2026-04-30 18:35:42,028 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1000,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:35:42,028 - INFO - Received prediction request with 24 fields
+2026-04-30 18:35:42,030 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:35:49,848 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:37:05,292 - INFO - Application shutdown
+2026-04-30 18:37:08,123 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:37:08,124 - INFO - Application started
+2026-04-30 18:37:10,737 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:37:10,737 - INFO - Application started
+2026-04-30 18:37:19,496 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":100,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:37:19,496 - INFO - Received prediction request with 24 fields
+2026-04-30 18:37:19,496 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:37:31,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:39:06,931 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":100,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:39:06,932 - INFO - Received prediction request with 24 fields
+2026-04-30 18:39:06,933 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:39:17,771 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:39:40,898 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1000,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:39:40,898 - INFO - Received prediction request with 24 fields
+2026-04-30 18:39:40,898 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:39:49,840 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:39:54,898 - INFO - Application shutdown
+2026-04-30 18:39:57,165 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:39:57,165 - INFO - Application started
+2026-04-30 18:40:03,321 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:40:03,321 - INFO - Application started
+2026-04-30 18:40:22,168 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":100,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:40:22,168 - INFO - Received prediction request with 24 fields
+2026-04-30 18:40:22,168 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:40:34,940 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:42:23,740 - INFO - Application shutdown
+2026-04-30 18:42:27,000 - ERROR - Error loading model: Error(s) in loading state_dict for KidneyDiseaseClassifier:
+	Missing key(s) in state_dict: "layers.3.weight", "layers.3.bias". 
+	Unexpected key(s) in state_dict: "layers.1.weight", "layers.1.bias". 
+2026-04-30 18:42:27,001 - INFO - Application started
+2026-04-30 18:45:00,026 - INFO - Raw request body: b'{"yas":50,"kan_basinci":100,"ozgul_agirlik":1.015,"albumin":2,"seker":1,"rastgele_kan_sekeri":100,"kan_ure":25,"serum_kreatinin":1,"sodyum":130,"potasyum":5,"hemoglobin":15,"paketli_hucre_hacmi":45,"beyaz_kan_hucresi_sayisi":6000,"kirmizi_kan_hucresi_sayisi":4,"kirmizi_kan_hucresi":1,"irin_hucresi":0,"irin_hucresi_kumesi":1,"bakteri":0,"hipertansiyon":1,"diyabet":1,"koroner_arter_hastaligi":0,"istah":1,"ayak_odemi":1,"anemi":0}'
+2026-04-30 18:45:00,029 - INFO - Received prediction request with 24 fields
+2026-04-30 18:45:00,036 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:45:12,362 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:45:24,001 - INFO - Raw request body: b'{"yas":65,"kan_basinci":160,"ozgul_agirlik":1.005,"albumin":4,"seker":4,"rastgele_kan_sekeri":80,"kan_ure":15,"serum_kreatinin":0.8,"sodyum":110,"potasyum":6.5,"hemoglobin":17,"paketli_hucre_hacmi":55,"beyaz_kan_hucresi_sayisi":3000,"kirmizi_kan_hucresi_sayisi":2.5,"kirmizi_kan_hucresi":0,"irin_hucresi":0,"irin_hucresi_kumesi":1,"bakteri":0,"hipertansiyon":1,"diyabet":1,"koroner_arter_hastaligi":0,"istah":1,"ayak_odemi":1,"anemi":0}'
+2026-04-30 18:45:24,001 - INFO - Received prediction request with 24 fields
+2026-04-30 18:45:24,002 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:45:36,660 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:45:45,618 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1.025,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":15.5,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:45:45,618 - INFO - Received prediction request with 24 fields
+2026-04-30 18:45:45,618 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:45:56,105 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:46:42,640 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":1.1,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":18,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:46:42,640 - INFO - Received prediction request with 24 fields
+2026-04-30 18:46:42,641 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:46:52,324 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
+2026-04-30 18:47:33,918 - INFO - Raw request body: b'{"yas":46,"kan_basinci":70,"ozgul_agirlik":13,"albumin":0,"seker":0,"rastgele_kan_sekeri":100,"kan_ure":30,"serum_kreatinin":0.8,"sodyum":142,"potasyum":4,"hemoglobin":18,"paketli_hucre_hacmi":44,"beyaz_kan_hucresi_sayisi":7500,"kirmizi_kan_hucresi_sayisi":5,"kirmizi_kan_hucresi":1,"irin_hucresi":1,"irin_hucresi_kumesi":0,"bakteri":0,"hipertansiyon":0,"diyabet":0,"koroner_arter_hastaligi":0,"istah":0,"ayak_odemi":0,"anemi":0}'
+2026-04-30 18:47:33,919 - INFO - Received prediction request with 24 fields
+2026-04-30 18:47:33,919 - INFO - Input tensor shape: torch.Size([1, 24])
+2026-04-30 18:47:47,885 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=AIzaSyAGBQZT046lUmHCe0K6P7pAWJkX17px7lo "HTTP/1.1 200 OK"
