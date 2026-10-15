@@ -4,12 +4,17 @@ Her özellik tek tek artırılıp/azaltılıp model çıktısındaki değişim �
 Pozitif = arttırınca hasta yapıyor (düz etkileyen)
 Negatif = arttırınca sağlıklı yapıyor (ters etkileyen)
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'backend'))
+
 import torch, torch.nn.functional as F
-import sys; sys.path.insert(0, 'backend')
 from model import KidneyDiseaseClassifier
 
+ROOT = Path(__file__).resolve().parent.parent
+
 m = KidneyDiseaseClassifier()
-m.load_state_dict(torch.load('backend/model.pt', map_location='cpu', weights_only=True))
+m.load_state_dict(torch.load(ROOT / 'backend/model.pt', map_location='cpu', weights_only=True))
 m.eval()
 
 means = [51.5625,76.575,1.017712,0.9,0.395,0.8825,0.81,0.105,0.055,

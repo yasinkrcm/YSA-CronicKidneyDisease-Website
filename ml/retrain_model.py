@@ -2,11 +2,13 @@
 Veri Temizleme + Model Yeniden Eğitim Scripti
 -----------------------------------------------
 Bu script kirli veriyi temizler, modeli yeniden eğitir ve model.pt kaydeder.
-Çalıştırma: python retrain_model.py
+Çalıştırma: (repo kökünden) python ml/retrain_model.py
 """
 
 import pandas as pd
 import numpy as np
+from pathlib import Path
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -15,12 +17,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.utils.class_weight import compute_class_weight
 from sklearn.metrics import classification_report, accuracy_score
 
+ROOT = Path(__file__).resolve().parent.parent
+
 # ─── 1. Veri Yükleme ve Temizleme ───
 print("=" * 60)
 print("1. VERİ TEMİZLEME")
 print("=" * 60)
 
-df = pd.read_csv("kidney_disease_turkce.csv")
+df = pd.read_csv(ROOT / "ml/data/kidney_disease_turkce.csv")
 if "id" in df.columns:
     df = df.drop("id", axis=1)
 
@@ -216,7 +220,7 @@ print(f"CKD (Hasta): Precision={precision[0]:.3f} | Recall={recall[0]:.3f} | F1=
 print(f"NotCKD:      Precision={precision[1]:.3f} | Recall={recall[1]:.3f} | F1={f1[1]:.3f}")
 
 # ─── 9. Modeli Kaydet ───
-save_path = "backend/model.pt"
+save_path = ROOT / "backend/model.pt"
 torch.save(best_model_state, save_path)
 print(f"\nModel kaydedildi: {save_path}")
 print(f"Keys: {list(best_model_state.keys())}")

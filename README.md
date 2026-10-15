@@ -36,18 +36,24 @@ Yapay Sinir Ağları (YSA) ile **kronik böbrek hastalığı (KBY) riskini tahmi
 ## 📁 Proje Yapısı
 
 ```
+YSA-CronicKidneyDisease-Website/
 ├── frontend/                     # Next.js 15 + HeroUI 3 arayüz
 ├── backend/
-│   ├── main.py                   # FastAPI uygulaması (tahmin + yorum)
+│   ├── main.py                   # FastAPI uygulaması (tahmin + Gemini yorumu)
 │   ├── model.py                  # PyTorch model sınıfı
 │   ├── model.pt                  # Eğitilmiş model ağırlıkları
 │   └── requirements.txt          # Python bağımlılıkları
-├── kidney_disease_turkce.csv     # Eğitim veri seti (Türkçe başlıklar)
-├── kidney_disease_ANN.ipynb      # Model eğitimi notebook'u
-├── retrain_model.py              # Veri temizleme + yeniden eğitim scripti
-├── check_sensitivity.py          # Model duyarlılık analizi
+├── ml/
+│   ├── data/                     # kidney_disease.csv (orijinal) + Türkçe versiyonu
+│   ├── kidney_disease_ANN.ipynb  # Model eğitimi notebook'u
+│   ├── retrain_model.py          # Veri temizleme + yeniden eğitim scripti
+│   ├── check_sensitivity.py      # Model duyarlılık analizi
+│   ├── isim_degistirme.py        # CSV sütun adı çevirici
+│   └── legacy_model.pt           # Eski model sürümü (arşiv)
+├── docs/                         # Sunum materyalleri (pptx)
 ├── ecosystem.config.js           # PM2 deployment konfigürasyonu
-└── ANN_Hipotiroid.pptx           # Sunum materyalleri
+├── CLAUDE.md                     # AI asistan proje dokümanı
+└── README.md                     # Bu dosya
 ```
 
 ---
@@ -64,10 +70,10 @@ echo "GEMINI_API_KEY=your_key_here" > .env
 uvicorn main:app --reload
 ```
 
-- 🌐 API: http://localhost:8001
-- 📚 Swagger dokümantasyonu: http://localhost:8001/docs
+- 🌐 API: http://localhost:8000
+- 📚 Swagger dokümantasyonu: http://localhost:8000/docs
 
-> Python versiyonu ≥ 3.10 önerilir (PyTorch Pydantic uyumluluğu için).
+> Python versiyonu ≥ 3.10 önerilir (PyTorch Pydantic uyumluluğu için). PM2 ile deploy edilirken port `8001` kullanılır (`ecosystem.config.js`).
 
 ## 🎨 Frontend Kurulumu (Next.js 15)
 
@@ -78,7 +84,7 @@ npm run dev
 # http://localhost:3000
 ```
 
-> Frontend'in çalışabilmesi için backend'in 8001 portunda çalışıyor olması gerekir.
+> Frontend'in çalışabilmesi için backend'in 8000 portunda çalışıyor olması gerekir (veya frontend/.env'de `NEXT_PUBLIC_API_URL` ayarlanabilir).
 
 ---
 
@@ -138,7 +144,19 @@ npm run dev
 ### Veri Ön İşleme
 - `?` ve boşluk temizliği, kategorik değişkenlerin binary encode edilmesi
 - Sayısal eksik değerler **medyan** ile doldurulur
+### Giriş Normalizasyonu
 - Girişler **StandardScaler** ile normalize edilir (mean/std `backend/main.py` içinde gömülü)
+
+### Yeniden Eğitim
+
+```bash
+# Repo kökünden:
+python ml/isim_degistirme.py     # orijinal CSV'yi Türkçeleştirir -> ml/data/
+python ml/retrain_model.py       # veri temizler + modeli eğitir -> backend/model.pt
+python ml/check_sensitivity.py   # feature duyarlılık analizi
+```
+
+> `retrain_model.py` eğitim sonrası scaler mean/std değerlerini ekrana bastırır; bunları `backend/main.py` içindeki `scaler_mean` / `scaler_std` sözlüklerine kopyalamanız gerekir.
 
 ---
 

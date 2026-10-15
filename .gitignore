@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Ortam değişkenleri
+.env
+.env.local
+
+# Loglar
+*.log
+logs/
+
+# ML artifact'leri (output klasörleri)
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+.next/
+out/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Command Code / Claude yerel ayarları
+.commandcode/
+.claude/settings.local.json

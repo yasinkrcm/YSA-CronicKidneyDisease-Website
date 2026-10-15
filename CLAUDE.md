@@ -7,12 +7,18 @@ Bu proje, Next.js + HeroUI 3 frontend ve FastAPI + PyTorch backend kullanarak b�
 ## Klasör Yapısı
 
 ```
-Yapay Sinir Ağları/
-├── frontend/                 # Next.js + HeroUI 3
-├── backend/                  # FastAPI + Python
-├── model.pt                  # PyTorch ML modeli
-├── kidney_disease_turkce.csv  # Eğitim veri seti
-└── CLAUDE.md                 # Bu dosya
+├── frontend/                     # Next.js + HeroUI 3
+├── backend/                      # FastAPI + PyTorch (model.pt burada)
+├── ml/
+│   ├── data/                     # kidney_disease.csv + Türkçe versiyonu
+│   ├── kidney_disease_ANN.ipynb  # Eğitim notebook'u
+│   ├── retrain_model.py          # Veri temizleme + yeniden eğitim
+│   ├── check_sensitivity.py      # Model duyarlılık analizi
+│   ├── isim_degistirme.py        # CSV sütun adı çevirici
+│   └── legacy_model.pt           # Eski model (arşiv)
+├── docs/                         # Sunumlar (pptx)
+├── ecosystem.config.js           # PM2 deployment
+└── CLAUDE.md                     # Bu dosya
 ```
 
 ## Backend (FastAPI)
@@ -31,7 +37,15 @@ uvicorn main:app --reload
 - `GET /health` - Sağlık kontrolü
 
 ### Environment Değişkenleri
-- `MINIMAX_API_KEY` - MiniMax API anahtarı (`.env` dosyasında)
+- `GEMINI_API_KEY` - Gemini API anahtarı (`.env` dosyasında; yorum üretimi kullanılıyor)
+
+### Yeniden Eğitim Döngüsü
+```bash
+# Repo kökünden:
+python ml/retrain_model.py       # veri temizler, modeli eğitir -> backend/model.pt
+python ml/check_sensitivity.py   # feature duyarlılık analizi
+```
+Eğitim sonrası scaler mean/std değerlerini backend/main.py'deki `scaler_mean`/`scaler_std` sözlüklerine kopyalamayı unutma.
 
 ### Hata Logları
 - Backend hataları: `backend/error.log`

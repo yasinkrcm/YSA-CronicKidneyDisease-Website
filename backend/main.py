@@ -28,6 +28,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+ROOT = Path(__file__).resolve().parent.parent
 MODEL_PATH = Path(__file__).parent / "model.pt"
 
 model = None
@@ -301,9 +302,7 @@ async def get_random_values(use_gemini: bool = True):
         if model is None:
             raise HTTPException(status_code=503, detail="Model not loaded")
 
-        csv_path = Path(__file__).parent.parent / "kidney_disease_turkce.csv"
-        if not csv_path.exists():
-            csv_path = Path(__file__).parent / "kidney_disease_turkce.csv"
+        csv_path = ROOT / "ml/data/kidney_disease_turkce.csv"
             
         if csv_path.exists():
             df = np.genfromtxt(csv_path, delimiter=',', skip_header=1, filling_values=0)

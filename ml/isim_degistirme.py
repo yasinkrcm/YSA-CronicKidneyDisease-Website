@@ -1,6 +1,9 @@
 import pandas as pd
+from pathlib import Path
 
-df = pd.read_csv('kidney_disease.csv')
+ROOT = Path(__file__).resolve().parent.parent
+
+df = pd.read_csv(ROOT / 'ml/data/kidney_disease.csv')
 
 df = df.rename(columns={
     'age': 'yas',
@@ -30,5 +33,5 @@ df = df.rename(columns={
     'classification': 'siniflandirma'
 })
 
-df.to_csv('kidney_disease_turkce.csv', index=False)
+df.to_csv(ROOT / 'ml/data/kidney_disease_turkce.csv', index=False)
 print(df.columns.tolist())
